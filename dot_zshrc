@@ -1,0 +1,17 @@
+# chezmoi (and other user-installed tools)
+export PATH="$HOME/.local/bin:$PATH"
+
+# nvm (Node version manager)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Starship prompt (config: ~/.config/starship.toml)
+command -v starship >/dev/null && eval "$(starship init zsh)"
+
+# Homebrew zsh plugins (syntax-highlighting must stay last)
+if command -v brew >/dev/null; then
+  BREW_PREFIX="$(brew --prefix)"
+  [ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  [ -f "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
