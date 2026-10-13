@@ -20,4 +20,8 @@ config.window_padding = {
 	bottom = 20,
 }
 
+if wezterm.target_triple:find("windows") then
+	config.default_prog = { "powershell.exe", "-NoLogo" }
+end
+
 return config
